@@ -1,5 +1,6 @@
 package qna.domain;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import qna.CannotDeleteException;
@@ -11,11 +12,19 @@ public class AnswerTest {
     public static final Answer A1 = new Answer(UserTest.JAVAJIGI, QuestionTest.Q1, "Answers Contents1");
     public static final Answer A2 = new Answer(UserTest.SANJIGI, QuestionTest.Q1, "Answers Contents2");
 
+
+    private Answer answer;
+
+    @BeforeEach
+    void setUp() {
+        this.answer = new Answer(UserTest.JAVAJIGI, QuestionTest.Q1, "Answers Contents1");
+    }
+
     @Test
     @DisplayName("답변 작성자가 본인인지 확인")
     void validationWriterIsOwner() {
         //then
-        assertThatThrownBy(() -> A1.validationWriterIsOwner(UserTest.SANJIGI))
+        assertThatThrownBy(() -> this.answer.validationWriterIsOwner(UserTest.SANJIGI))
                 .isInstanceOf(CannotDeleteException.class);
     }
 
@@ -23,9 +32,10 @@ public class AnswerTest {
     @Test
     @DisplayName("답변이 삭제되었는지 확인")
     void toDeleteHistory() {
+        //given
         //when
-        A1.toDeleteHistory();
+        this.answer.toDeleteHistory();
         //then
-        assertThat(A1.isDeleted()).isTrue();
+        assertThat(this.answer.isDeleted()).isTrue();
     }
 }

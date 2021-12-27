@@ -11,8 +11,8 @@ class DeleteHistoriesTest {
     @DisplayName("Question이 Answer 보다 앞으로 오는지 테스트")
     void prepend() throws CannotDeleteException {
         //given
-        Question question = QuestionTest.Q1;
-        question.addAnswer(AnswerTest.A1);
+        Question question = new Question("title1", "contents1").writeBy(UserTest.JAVAJIGI);
+        question.addAnswer(new Answer(UserTest.JAVAJIGI, QuestionTest.Q1, "Answers Contents1"));
 
         //when
         DeleteHistory questionDeleteHistory = question.toDeleteHistory();

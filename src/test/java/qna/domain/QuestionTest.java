@@ -1,5 +1,6 @@
 package qna.domain;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import qna.CannotDeleteException;
@@ -12,11 +13,18 @@ public class QuestionTest {
     public static final Question Q2 = new Question("title2", "contents2").writeBy(UserTest.SANJIGI);
 
 
+    private Question question;
+
+    @BeforeEach
+    void setUp() {
+        question = new Question("title1", "contents1").writeBy(UserTest.JAVAJIGI);
+    }
+
     @Test
     @DisplayName("질문 작성자와 삭제하려는 사람이 다를 경우")
     void deleteByAnotherUser() {
         //then
-        assertThatThrownBy(() -> Q1.deleteByUser(UserTest.SANJIGI))
+        assertThatThrownBy(() -> question.deleteByUser(UserTest.SANJIGI))
                 .isInstanceOf(CannotDeleteException.class);
     }
 
@@ -25,18 +33,19 @@ public class QuestionTest {
     @DisplayName("질문 작성자와 삭제하려는 사람이 같을 경우")
     void deleteByWriter() throws CannotDeleteException {
         //when
-        Q1.deleteByUser(UserTest.JAVAJIGI);
+        question.deleteByUser(UserTest.JAVAJIGI);
         //then
-        assertThat(Q1.isDeleted()).isTrue();
+        assertThat(question.isDeleted()).isTrue();
     }
 
     @Test
     @DisplayName("질문 작성자와 삭제하려는 사람이 같지만, 다른 사람이 쓴 답변이 있을 경우")
     void deleteWithAnotherAnswer() {
         //given
-        Q1.addAnswer(AnswerTest.A2);
+        Answer answer = new Answer(UserTest.SANJIGI, question, "Answers Contents2");
+        question.addAnswer(answer);
         //then
-        assertThatThrownBy(() -> Q1.deleteByUser(UserTest.JAVAJIGI))
+        assertThatThrownBy(() -> question.deleteByUser(UserTest.JAVAJIGI))
                 .isInstanceOf(CannotDeleteException.class);
     }
 
@@ -44,12 +53,13 @@ public class QuestionTest {
     @DisplayName("질문 작성자와 삭제하려는 사람이 같고, 작성자의 답변만 있을 경우")
     void deleteWithWriterAnswer() throws CannotDeleteException {
         //given
-        Q2.addAnswer(AnswerTest.A2);
+        Answer answer = new Answer(UserTest.JAVAJIGI, question, "Answers Contents1");
+        question.addAnswer(answer);
         //when
-        Q2.deleteByUser(UserTest.SANJIGI);
+        question.deleteByUser(UserTest.JAVAJIGI);
         //then
-        assertThat(Q2.isDeleted()).isTrue();
-        assertThat(AnswerTest.A2.isDeleted()).isTrue();
+        assertThat(question.isDeleted()).isTrue();
+        assertThat(answer.isDeleted()).isTrue();
 
     }
 

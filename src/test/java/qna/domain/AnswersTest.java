@@ -18,14 +18,16 @@ class AnswersTest {
         //given
         Answers answers = new Answers();
         for (int i = 0; i < 10; i++) {
-            answers.add(A1);
+            answers.add(new Answer(UserTest.JAVAJIGI, QuestionTest.Q1, "Answers Contents1"));
         }
+        Answer answer = new Answer(UserTest.JAVAJIGI, QuestionTest.Q1, "Answers Test");
+        answers.add(answer);
 
         //when
         answers.delete(UserTest.JAVAJIGI);
 
         //then
-        assertThat(A1.isDeleted()).isTrue();
+        assertThat(answer.isDeleted()).isTrue();
     }
 
     @Test
@@ -34,9 +36,10 @@ class AnswersTest {
         //given
         Answers answers = new Answers();
         for (int i = 0; i < 10; i++) {
-            answers.add(A1);
+            answers.add(new Answer(UserTest.JAVAJIGI, QuestionTest.Q1, "Answers Contents1"));
         }
-        answers.add(B1);
+        Answer answer = new Answer(UserTest.SANJIGI, QuestionTest.Q1, "Answers Test");
+        answers.add(answer);
 
         //then
         assertThatThrownBy(() -> answers.delete(UserTest.JAVAJIGI))
