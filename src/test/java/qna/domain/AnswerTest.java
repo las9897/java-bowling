@@ -21,21 +21,19 @@ public class AnswerTest {
     }
 
     @Test
-    @DisplayName("답변 작성자가 본인인지 확인")
-    void validationWriterIsOwner() {
+    @DisplayName("답변이 삭제되었는지 확인")
+    void delete() throws CannotDeleteException {
+        //when
+        this.answer.delete(UserTest.JAVAJIGI);
         //then
-        assertThatThrownBy(() -> this.answer.validationWriterIsOwner(UserTest.SANJIGI))
-                .isInstanceOf(CannotDeleteException.class);
+        assertThat(this.answer.isDeleted()).isTrue();
     }
-
 
     @Test
     @DisplayName("답변이 삭제되었는지 확인")
-    void toDeleteHistory() {
-        //given
-        //when
-        this.answer.toDeleteHistory();
+    void deleteFail() {
         //then
-        assertThat(this.answer.isDeleted()).isTrue();
+        assertThatThrownBy(() -> this.answer.delete(UserTest.SANJIGI))
+                .isInstanceOf(CannotDeleteException.class);
     }
 }

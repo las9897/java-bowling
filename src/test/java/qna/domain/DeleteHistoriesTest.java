@@ -15,10 +15,9 @@ class DeleteHistoriesTest {
         question.addAnswer(new Answer(UserTest.JAVAJIGI, QuestionTest.Q1, "Answers Contents1"));
 
         //when
-        DeleteHistory questionDeleteHistory = question.toDeleteHistory();
         DeleteHistories deleteHistories = question.deleteByUser(UserTest.JAVAJIGI);
-
+        DeleteHistory deleteHistory = deleteHistories.getDeleteHistories().get(0);
         //then
-        assertThat(deleteHistories.getDeleteHistories().get(0)).isEqualTo(questionDeleteHistory);
+        assertThat(deleteHistory.getContentType()).isEqualTo(ContentType.QUESTION);
     }
 }

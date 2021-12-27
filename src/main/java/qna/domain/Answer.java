@@ -72,13 +72,14 @@ public class Answer extends AbstractEntity {
         this.question = question;
     }
 
-    public void validationWriterIsOwner(User loginUser) throws CannotDeleteException {
+    private void validationWriterIsOwner(User loginUser) throws CannotDeleteException {
         if (!isOwner(loginUser)) {
             throw new CannotDeleteException(MESSAGE_EXIST_ANSWER_BY_OTHER_USER);
         }
     }
 
-    public DeleteHistory toDeleteHistory() {
+    public DeleteHistory delete(User loginUser) throws CannotDeleteException {
+        validationWriterIsOwner(loginUser);
         setDeleted(true);
         return new DeleteHistory(ContentType.ANSWER, getId(), getWriter(), LocalDateTime.now());
     }

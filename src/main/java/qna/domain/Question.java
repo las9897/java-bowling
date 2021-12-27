@@ -43,11 +43,11 @@ public class Question extends AbstractEntity {
     public DeleteHistories deleteByUser(User loginUser) throws CannotDeleteException {
         validationWriter(loginUser);
         DeleteHistories deleteHistories = this.answers.delete(loginUser);
-        deleteHistories.prepend(this.setDeleted(true).toDeleteHistory());
+        deleteHistories.prepend(this.setDeleted(true).delete());
         return deleteHistories;
     }
 
-    public DeleteHistory toDeleteHistory() {
+    private DeleteHistory delete() {
         return new DeleteHistory(ContentType.QUESTION, getId(), getWriter(), LocalDateTime.now());
     }
 

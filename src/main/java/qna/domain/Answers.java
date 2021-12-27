@@ -9,7 +9,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Embeddable
 public class Answers {
@@ -23,20 +22,11 @@ public class Answers {
     }
 
     public DeleteHistories delete(User loginUser) throws CannotDeleteException {
-        validationWriter(loginUser);
-        return answers.stream()
-                .map(Answer::toDeleteHistory)
-                .collect(Collectors.collectingAndThen(Collectors.toList(), DeleteHistories::new));
-    }
-
-    private void validationWriter(User loginUser) throws CannotDeleteException {
-        for (Answer answer : this.answers) {
-            answer.validationWriterIsOwner(loginUser);
+        List<DeleteHistory> list = new ArrayList<>();
+        for (Answer answer : answers) {
+            list.add(answer.delete(loginUser));
         }
-    }
-
-    public void toQuestion(Question question) {
-        this.answers.forEach(answer -> answer.toQuestion(question));
+        return new DeleteHistories(list);
     }
 
     public void add(Answer answer) {
