@@ -15,4 +15,8 @@ public class Spare extends Finished {
         this.secondFallenPins = new Pin(secondFallenPins);
     }
 
+    @Override
+    public String symbol() {
+        return firstFallenPins.getCountOfPin() + DELIMITER + SYMBOL;
+    }
 }

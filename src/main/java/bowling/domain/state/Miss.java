@@ -12,4 +12,9 @@ public class Miss extends Finished {
         this.firstPin = new Pin(firstPin);
         this.secondPin = new Pin(secondPin);
     }
+
+    @Override
+    public String symbol() {
+        return firstPin.getCountOfPin() + DELIMITER + secondPin.getCountOfPin();
+    }
 }

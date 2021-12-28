@@ -11,4 +11,8 @@ public class Strike extends Finished {
         return Pin.MAX;
     }
 
+    @Override
+    public String symbol() {
+        return SYMBOL;
+    }
 }
