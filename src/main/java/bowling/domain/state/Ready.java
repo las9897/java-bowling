@@ -8,6 +8,7 @@ public class Ready extends Running {
 
     @Override
     public State bowl(int countOfPin) {
+        Pin.validationCountOfPin(countOfPin);
         if (Pin.isMax(countOfPin)) {
             return new Strike();
         }
