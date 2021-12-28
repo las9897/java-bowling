@@ -4,6 +4,8 @@ public class Pin {
     private static final int MAX_PINS = 10;
     private static final int MIN_PINS = 0;
 
+    public static final Pin MAX = new Pin(MAX_PINS);
+
     private final int fallenPins;
 
     public Pin(int fallenPins) {
@@ -17,8 +19,11 @@ public class Pin {
         }
     }
 
-    public Pin addPins(int addPins) {
-        return new Pin(this.fallenPins + addPins);
+    public static boolean isMax(int fallenPins) {
+        return fallenPins == MAX_PINS;
     }
 
+    public int getFallenPins() {
+        return fallenPins;
+    }
 }
