@@ -1,6 +1,5 @@
 package bowling.domain.state;
 
-import bowling.domain.common.State;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -11,7 +10,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 class ReadyTest {
-    private State state;
+    private BowlState state;
 
     @BeforeEach
     void setUp() {
