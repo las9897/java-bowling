@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 class FirstBowlTest {
@@ -19,12 +18,6 @@ class FirstBowlTest {
         state = new FirstBowl(5);
     }
 
-    @Test
-    @DisplayName("쓰러진 핀의 합계가 10일 경우 Spare 반환")
-    void spare() {
-        //then
-        assertThat(state.bowl(5)).isInstanceOf(Spare.class);
-    }
 
     @ParameterizedTest
     @ValueSource(ints = {-1, 11})

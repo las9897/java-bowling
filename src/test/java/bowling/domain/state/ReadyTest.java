@@ -3,12 +3,12 @@ package bowling.domain.state;
 import bowling.domain.common.State;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 class ReadyTest {
     private State state;
@@ -16,13 +16,6 @@ class ReadyTest {
     @BeforeEach
     void setUp() {
         state = new Ready();
-    }
-
-    @Test
-    @DisplayName("투구 수가 10이면 스트라이크 반환")
-    void strike() {
-        //then
-        assertThat(state.bowl(10)).isInstanceOf(Strike.class);
     }
 
     @Test
