@@ -1,4 +1,4 @@
-package bowling.domain.common;
+package bowling.domain.state;
 
 public interface Symbol {
 

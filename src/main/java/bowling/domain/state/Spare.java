@@ -1,7 +1,6 @@
 package bowling.domain.state;
 
 import bowling.domain.Pin;
-import bowling.domain.common.Finished;
 
 public class Spare extends Finished {
 
