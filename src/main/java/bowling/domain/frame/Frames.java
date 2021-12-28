@@ -1,7 +1,6 @@
 package bowling.domain.frame;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 public class Frames {
@@ -21,7 +20,7 @@ public class Frames {
         return new Frames(frames);
     }
 
-    public void bowl(){
+    public void bowl() {
         frames.forEach(Frame::bowl);
     }
 

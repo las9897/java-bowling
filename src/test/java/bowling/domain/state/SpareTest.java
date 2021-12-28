@@ -1,5 +1,7 @@
 package bowling.domain.state;
 
+import bowling.domain.state.finished.Spare;
+import bowling.domain.state.running.FirstBowl;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

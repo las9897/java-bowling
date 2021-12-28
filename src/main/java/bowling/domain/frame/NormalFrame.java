@@ -7,7 +7,7 @@ public class NormalFrame extends AbstractFrame {
     }
 
     @Override
-    public boolean isFinished() {
-        return false;
+    public boolean isNotFinished() {
+        return true;
     }
 }

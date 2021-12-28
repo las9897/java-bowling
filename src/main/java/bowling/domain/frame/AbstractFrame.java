@@ -1,7 +1,7 @@
 package bowling.domain.frame;
 
 import bowling.domain.state.BowlState;
-import bowling.domain.state.Ready;
+import bowling.domain.state.running.Ready;
 import bowling.view.InputView;
 
 public abstract class AbstractFrame implements Frame {
@@ -14,7 +14,7 @@ public abstract class AbstractFrame implements Frame {
 
     @Override
     public void bowl() {
-        while (!bowlState.isFinished()) {
+        while (bowlState.isNotFinished()) {
             this.bowlState = this.bowlState.bowl(InputView.countOfPin(index));
         }
     }

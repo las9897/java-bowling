@@ -6,8 +6,8 @@ public class LastFrame extends AbstractFrame {
     }
 
     @Override
-    public boolean isFinished() {
-        return true;
+    public boolean isNotFinished() {
+        return false;
     }
 
 

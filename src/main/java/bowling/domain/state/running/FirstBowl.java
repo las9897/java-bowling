@@ -1,6 +1,9 @@
-package bowling.domain.state;
+package bowling.domain.state.running;
 
 import bowling.domain.Pin;
+import bowling.domain.state.BowlState;
+import bowling.domain.state.finished.Miss;
+import bowling.domain.state.finished.Spare;
 
 public class FirstBowl extends Running {
 
