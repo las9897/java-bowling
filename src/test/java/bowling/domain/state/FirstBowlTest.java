@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 
 class FirstBowlTest {
 
-    private BowlState state;
+    private State state;
 
     @BeforeEach
     void setUp() {

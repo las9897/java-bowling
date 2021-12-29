@@ -12,7 +12,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 class ReadyTest {
-    private BowlState state;
+    private State state;
 
     @BeforeEach
     void setUp() {

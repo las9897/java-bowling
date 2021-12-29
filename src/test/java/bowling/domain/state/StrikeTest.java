@@ -13,7 +13,7 @@ class StrikeTest {
     @DisplayName("첫 투구가 10일 때 스트라이크")
     void strike() {
         //given
-        BowlState state = new Ready();
+        State state = new Ready();
         //then
         assertThat(state.bowl(10)).isInstanceOf(Strike.class);
     }
