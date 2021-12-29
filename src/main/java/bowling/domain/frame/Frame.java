@@ -1,7 +1,7 @@
 package bowling.domain.frame;
 
-import bowling.domain.state.State;
-
-public interface Frame extends State {
+public interface Frame {
     void bowl();
+
+    boolean isNotFinished();
 }
