@@ -7,6 +7,8 @@ import bowling.domain.state.finished.Spare;
 
 public class FirstBowl extends Running {
 
+    private static final String SYMBOL_FORMAT = "%3s   ";
+
     private final int countOfPin;
 
     public FirstBowl(int countOfPin) {
@@ -20,5 +22,10 @@ public class FirstBowl extends Running {
             return new Spare(this.countOfPin, secondCountOfPin);
         }
         return new Miss(this.countOfPin, secondCountOfPin);
+    }
+
+    @Override
+    public String symbol() {
+        return String.format(SYMBOL_FORMAT, Pin.isGutter(countOfPin));
     }
 }

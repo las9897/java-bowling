@@ -7,7 +7,15 @@ public class NormalFrame extends AbstractFrame {
     }
 
     @Override
-    public boolean isNotFinished() {
-        return true;
+    public void pitching(int countOfPin) {
+        this.bowlState = this.bowlState.bowl(countOfPin);
+        if (!this.bowlState.isNotFinished()) {
+            finish();
+        }
+    }
+
+    @Override
+    public boolean isLast() {
+        return false;
     }
 }

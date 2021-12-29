@@ -6,6 +6,7 @@ import java.util.Objects;
 
 public class Miss extends Finished {
 
+    private static final String SYMBOL_FORMAT = "%3s|%s ";
     private final Pin firstPin;
     private final Pin secondPin;
 
@@ -14,9 +15,10 @@ public class Miss extends Finished {
         this.secondPin = new Pin(secondPin);
     }
 
+
     @Override
     public String symbol() {
-        return firstPin.getCountOfPin() + DELIMITER + secondPin.getCountOfPin();
+        return String.format(SYMBOL_FORMAT, Pin.isGutter(firstPin.getCountOfPin()), Pin.isGutter(secondPin.getCountOfPin()));
     }
 
     @Override

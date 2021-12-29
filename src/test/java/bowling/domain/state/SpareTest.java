@@ -14,7 +14,10 @@ class SpareTest {
     void spare() {
         //given
         BowlState state = new FirstBowl(5);
+        //when
+        BowlState nextState = state.bowl(5);
         //then
-        assertThat(state.bowl(5)).isInstanceOf(Spare.class);
+        assertThat(nextState).isInstanceOf(Spare.class);
+        assertThat(nextState.symbol()).contains("5|/");
     }
 }

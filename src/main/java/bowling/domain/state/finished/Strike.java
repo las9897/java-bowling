@@ -4,7 +4,7 @@ import bowling.domain.Pin;
 
 public class Strike extends Finished {
 
-    private static final String SYMBOL = " X ";
+    private static final String SYMBOL = "  X   ";
 
     public Pin getPin() {
         return Pin.MAX;

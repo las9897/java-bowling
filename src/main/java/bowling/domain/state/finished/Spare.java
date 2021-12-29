@@ -6,7 +6,7 @@ import java.util.Objects;
 
 public class Spare extends Finished {
 
-    private static final String SYMBOL = "/";
+    private static final String SYMBOL_FORMAT = "%3d|/ ";
 
     private final Pin firstFallenPins;
     private final Pin secondFallenPins;
@@ -18,7 +18,7 @@ public class Spare extends Finished {
 
     @Override
     public String symbol() {
-        return firstFallenPins.getCountOfPin() + DELIMITER + SYMBOL;
+        return String.format(SYMBOL_FORMAT, firstFallenPins.getCountOfPin());
     }
 
     @Override

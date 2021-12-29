@@ -2,20 +2,33 @@ package bowling.domain.frame;
 
 import bowling.domain.state.BowlState;
 import bowling.domain.state.running.Ready;
-import bowling.view.InputView;
 
 public abstract class AbstractFrame implements Frame {
-    private final int index;
+    protected final int index;
+    protected boolean finished;
     protected BowlState bowlState = new Ready();
 
     public AbstractFrame(int index) {
         this.index = index;
+        this.finished = false;
+    }
+
+    protected void finish() {
+        finished = true;
     }
 
     @Override
-    public void bowl() {
-        while (bowlState.isNotFinished()) {
-            this.bowlState = this.bowlState.bowl(InputView.countOfPin(index));
-        }
+    public BowlState getBowlState() {
+        return bowlState;
+    }
+
+    @Override
+    public int getIndex() {
+        return index;
+    }
+
+    @Override
+    public boolean isNotFinished() {
+        return !finished;
     }
 }

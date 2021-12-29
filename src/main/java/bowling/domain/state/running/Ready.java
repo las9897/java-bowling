@@ -6,6 +6,8 @@ import bowling.domain.state.finished.Strike;
 
 public class Ready extends Running {
 
+    private static final String SYMBOL_FORMAT = "      ";
+
     @Override
     public BowlState bowl(int countOfPin) {
         Pin.validationCountOfPin(countOfPin);
@@ -13,5 +15,10 @@ public class Ready extends Running {
             return new Strike();
         }
         return new FirstBowl(countOfPin);
+    }
+
+    @Override
+    public String symbol() {
+        return SYMBOL_FORMAT;
     }
 }

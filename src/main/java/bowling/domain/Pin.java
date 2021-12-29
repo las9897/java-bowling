@@ -5,10 +5,9 @@ import java.util.Objects;
 public class Pin {
     private static final String MESSAGE_PIN_SIZE_EXCEPTION_FORMAT = "볼링핀은 0 ~ 10개를 넘을 수 없습니다. 입력값: %d";
     private static final int MAX_PINS = 10;
-    private static final int MIN_PINS = 0;
-
     public static final Pin MAX = new Pin(MAX_PINS);
-
+    private static final int MIN_PINS = 0;
+    private static final String GUTTER = "-";
     private final int countOfPin;
 
     public Pin(int countOfPin) {
@@ -22,8 +21,12 @@ public class Pin {
         }
     }
 
-    public static boolean isMax(int fallenPins) {
-        return fallenPins == MAX_PINS;
+    public static boolean isMax(int countOfPin) {
+        return countOfPin == MAX_PINS;
+    }
+
+    public static String isGutter(int countOfPin) {
+        return countOfPin == MIN_PINS ? GUTTER : String.valueOf(countOfPin);
     }
 
     public int getCountOfPin() {
