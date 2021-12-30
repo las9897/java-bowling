@@ -1,20 +1,20 @@
-package bowling.domain.state;
+package bowling.domain.state.finished;
 
-import bowling.domain.state.finished.Miss;
+import bowling.domain.state.State;
 import bowling.domain.state.running.FirstBowl;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class MissTest {
+class SpareTest {
 
     @Test
-    @DisplayName("쓰러진 핀들의 합계가 10이 안되었을 때 Miss 반환")
-    void miss() {
+    @DisplayName("쓰러진 핀의 합계가 10일 경우 Spare 반환")
+    void spare() {
         //given
         State state = new FirstBowl(5);
         //then
-        assertThat(state.bowl(4)).isInstanceOf(Miss.class);
+        assertThat(state.bowl(5)).isInstanceOf(Spare.class);
     }
 }

@@ -1,6 +1,6 @@
-package bowling.domain.state;
+package bowling.domain.state.finished;
 
-import bowling.domain.state.finished.Strike;
+import bowling.domain.state.State;
 import bowling.domain.state.running.Ready;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
