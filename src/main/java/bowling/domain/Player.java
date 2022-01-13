@@ -25,4 +25,8 @@ public class Player {
             throw new IllegalArgumentException(MESSAGE_VALIDATION_NAME_SIZE);
         }
     }
+
+    public String getName() {
+        return name;
+    }
 }

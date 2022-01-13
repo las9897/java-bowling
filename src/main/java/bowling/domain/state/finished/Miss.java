@@ -14,9 +14,10 @@ public class Miss extends Finished {
         this.secondPin = new Pin(secondPin);
     }
 
+
     @Override
     public String symbol() {
-        return firstPin.getCountOfPin() + DELIMITER + secondPin.getCountOfPin();
+        return String.join(DELIMITER, Pin.isGutter(firstPin.getCountOfPin()), Pin.isGutter(secondPin.getCountOfPin()));
     }
 
     @Override

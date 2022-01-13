@@ -1,5 +1,7 @@
 package bowling.view;
 
+import bowling.domain.frame.Frame;
+
 import java.util.Scanner;
 
 public class InputView {
@@ -14,8 +16,8 @@ public class InputView {
         return SCANNER.nextLine();
     }
 
-    public static int countOfPin(int frameIndex) {
-        OutputView.whatCountOfPin(frameIndex);
+    public static int countOfPin(Frame frame) {
+        OutputView.whatCountOfPin(frame.getIndex());
         return Integer.parseInt(SCANNER.nextLine());
     }
 }
